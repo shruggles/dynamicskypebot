@@ -69,6 +69,7 @@ namespace SkypeBot.plugins {
                 title = HttpUtility.HtmlDecode(title);
                 title = title.Trim();
 
+                job = Regex.Replace(job, "<.+?>", "");
                 job = HttpUtility.HtmlDecode(job);
                 job = job.Trim();
 
