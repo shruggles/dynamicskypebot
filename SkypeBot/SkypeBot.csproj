@@ -64,6 +64,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -109,7 +110,7 @@
       <HintPath>Dependencies\Hammock.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
-      <HintPath>..\..\..\..\Visual Studio 2010\Libraries\log4net-1.2.10\bin\net\2.0\release\log4net.dll</HintPath>
+      <HintPath>..\packages\log4net.2.0.0\lib\net35-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Dependencies\Newtonsoft.Json.dll</HintPath>
@@ -199,7 +200,6 @@
     </Compile>
     <Compile Include="plugins\CalculatorPlugin.cs" />
     <Compile Include="plugins\Rule34Plugin.cs" />
-    <Compile Include="plugins\LMLPlugin.cs" />
     <Compile Include="plugins\TransformationPlugin.cs" />
     <Compile Include="plugins\NotAlwaysRightPlugin.cs" />
     <Compile Include="plugins\TextsFromLastNightPlugin.cs" />
@@ -293,6 +293,7 @@
       <SubType>Designer</SubType>
     </None>
     <EmbeddedResource Include="plugins\calc\math-grammar.cgt" />
+    <None Include="packages.config" />
     <None Include="plugins\calc\math-grammar.grm" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

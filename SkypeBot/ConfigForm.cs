@@ -47,7 +47,6 @@ namespace SkypeBot {
             new TextsFromLastNightPlugin(),
             new NotAlwaysRightPlugin(),
             new TransformationPlugin(),
-            new LMLPlugin(),
             new CalculatorPlugin(),
             new Rule34Plugin(),
         });
