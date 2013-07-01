@@ -36,7 +36,6 @@ namespace SkypeBot {
             new BashPlugin(),
             new PenisPlugin(),
             new QuotePlugin(),
-            new TwitterPlugin(),
             new MazePlugin(),
             new EightBallPlugin(),
             new DeviantArtPlugin(),
