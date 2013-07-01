@@ -31,12 +31,10 @@ namespace SkypeBot {
             new PornPlugin(),
             new WafflePlugin(),
             new HighLowPlugin(),
-            new LolcatPlugin(),
             new WikipediaPlugin(),
             new SomethingAwfulPlugin(),
             new BashPlugin(),
             new PenisPlugin(),
-            new RandomLinkPlugin(),
             new QuotePlugin(),
             new TwitterPlugin(),
             new MazePlugin(),
@@ -52,8 +50,6 @@ namespace SkypeBot {
             new LMLPlugin(),
             new CalculatorPlugin(),
             new Rule34Plugin(),
-            new AutoCorrectPlugin(),
-
         });
 
         private Skype skype;
