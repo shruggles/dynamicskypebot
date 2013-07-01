@@ -12,8 +12,8 @@
     <AssemblyName>SkypeBot</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ManifestCertificateThumbprint>603F385F92A081C903A3BC0EA0A99D72BF8897A4</ManifestCertificateThumbprint>
-    <ManifestKeyFile>SkypeBot_1_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestCertificateThumbprint>72162FF35C6B6825B99BD71E26A10FF8B93B0B23</ManifestCertificateThumbprint>
+    <ManifestKeyFile>signing_cert.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
     <SignManifests>true</SignManifests>
     <IsWebBootstrapper>true</IsWebBootstrapper>
@@ -40,8 +40,8 @@
     <SuiteName>Dynamic Skype Bot</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>2</ApplicationRevision>
-    <ApplicationVersion>1.2.4.%2a</ApplicationVersion>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.2.5.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -198,7 +198,6 @@
       <DependentUpon>YoutubePluginConfigForm.cs</DependentUpon>
     </Compile>
     <Compile Include="plugins\CalculatorPlugin.cs" />
-    <Compile Include="plugins\AutocorrectPlugin.cs" />
     <Compile Include="plugins\Rule34Plugin.cs" />
     <Compile Include="plugins\LMLPlugin.cs" />
     <Compile Include="plugins\TransformationPlugin.cs" />
@@ -224,11 +223,9 @@
     <Compile Include="plugins\maze\model\MazeWalker.cs" />
     <Compile Include="plugins\PluginSettings.cs" />
     <Compile Include="plugins\QuotePlugin.cs" />
-    <Compile Include="plugins\RandomLinkPlugin.cs" />
     <Compile Include="plugins\PenisPlugin.cs" />
     <Compile Include="plugins\SomethingAwfulPlugin.cs" />
     <Compile Include="plugins\WikipediaPlugin.cs" />
-    <Compile Include="plugins\LolcatPlugin.cs" />
     <Compile Include="plugins\HighLowPlugin.cs" />
     <Compile Include="plugins\PluginSettings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -419,28 +416,27 @@
     <None Include="Resources\help.png" />
     <None Include="Resources\arrow_fat_down.gif" />
     <None Include="Resources\person.gif" />
-    <None Include="SkypeBot_1_TemporaryKey.pfx" />
-    <None Include="SkypeBot_TemporaryKey.pfx" />
+    <None Include="signing_cert.pfx" />
   </ItemGroup>
   <ItemGroup>
     <PublishFile Include="doc\readme.txt">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
     <PublishFile Include="doc\todo.txt">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
   </ItemGroup>
