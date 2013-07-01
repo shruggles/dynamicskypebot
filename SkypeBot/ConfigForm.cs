@@ -29,7 +29,6 @@ namespace SkypeBot {
             new DicePlugin(),
             new FourChanPlugin(),
             new PornPlugin(),
-            new WafflePlugin(),
             new HighLowPlugin(),
             new WikipediaPlugin(),
             new SomethingAwfulPlugin(),

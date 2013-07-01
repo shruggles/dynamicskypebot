@@ -220,7 +220,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>PluginSettings.settings</DependentUpon>
     </Compile>
-    <Compile Include="plugins\WafflePlugin.cs" />
     <Compile Include="plugins\PornPlugin.cs" />
     <Compile Include="plugins\FourChanPlugin.cs" />
     <Compile Include="plugins\DicePlugin.cs" />
@@ -281,7 +280,6 @@
       <SubType>Designer</SubType>
     </None>
     <EmbeddedResource Include="plugins\calc\math-grammar.cgt" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="plugins\calc\math-grammar.grm" />
     <None Include="Properties\Settings.settings">
