@@ -45,30 +45,26 @@ namespace SkypeBot.plugins {
                 String searchUri = "http://rule34.paheal.net/post/list?search=" + System.Uri.EscapeDataString(query);
 
                 log.Info(String.Format("Searching rule34 for '{0}'", query));
-                WebRequest webReq = WebRequest.Create(searchUri);
+                HttpWebRequest webReq = (HttpWebRequest) HttpWebRequest.Create("http://rule34.paheal.net/post/list/" + System.Uri.EscapeDataString(query) + "/1");
                 webReq.Timeout = 20000;
-                try {
-                    webReq.GetResponse();
-                } catch (WebException) {
-                    log.Warn("rule34.paheal.net appears to be unavailable at the moment.");
-                    message.Chat.SendMessage("Sorry, the website failed to respond in time. It may be down, or just slow.\nIf you want to try the search for yourself, go to http://rule34.paheal.net/post/list?search=" + System.Uri.EscapeDataString(query));
-                    return;   
-                }
-                log.Info("Search completed; looking up result...");
-
-                webReq = WebRequest.Create("http://rule34.paheal.net/post/list/" + System.Uri.EscapeDataString(query) + "/1");
-                webReq.Timeout = 20000;
+                webReq.AllowAutoRedirect = true;
                 WebResponse response;
                 try {
                     response = webReq.GetResponse();
-                } catch (WebException) {
-                    log.Warn("rule34.paheal.net appears to be unavailable at the moment.");
-                    message.Chat.SendMessage("Sorry, the website failed to respond in time. It may be down, or just slow.\nIf you want to try the search for yourself, go to http://rule34.paheal.net/post/list?search=" + System.Uri.EscapeDataString(query));
-                    return;
+                } catch (WebException e) {
+                    if (e.Status == WebExceptionStatus.ProtocolError && e.Response != null
+                        && ((HttpWebResponse) e.Response).StatusCode == HttpStatusCode.NotFound) {
+                        message.Chat.SendMessage(String.Format("Sorry, couldn't find any rule34 pictures of {0}.", query));
+                        return;    
+                    } else {
+                        log.Warn("rule34.paheal.net appears to be unavailable at the moment.");
+                        message.Chat.SendMessage("Sorry, the website failed to respond in time. It may be down, or just slow.\nIf you want to try the search for yourself, go to http://rule34.paheal.net/post/list?search=" + System.Uri.EscapeDataString(query));
+                        return;
+                    }
                 }
 
                 String responseText = new StreamReader(response.GetResponseStream()).ReadToEnd();
-                Regex imgFinderRx = new Regex(@"(?<=id='Imagesmain-toggle'.*)<a href='([^']*?)'>Image Only</a>", RegexOptions.Singleline);
+                Regex imgFinderRx = new Regex(@"<a href=""([^""]*?)"">Image Only</a>", RegexOptions.Singleline);
                 MatchCollection imgFinderColl = imgFinderRx.Matches(responseText);
                 if (imgFinderColl.Count <= 0) {
                     message.Chat.SendMessage(String.Format("Sorry, couldn't find any rule34 pictures of {0}.", query));
