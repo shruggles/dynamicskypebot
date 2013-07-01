@@ -36,9 +36,8 @@ namespace SkypeBot.plugins {
                     new OverheardSite("ny", "overheardinnewyork.com", "Overheard In New York"),
                     new OverheardSite("office", "overheardintheoffice.com", "Overheard In The Office"),
                     new OverheardSite("beach", "overheardatthebeach.com", "Overheard At The Beach"),
-                    // no random feature atm :
-                    //new OverheardSite("everywhere", "overheardeverywhere.com", "Overheard Everywhere"),
-                    //new OverheardSite("celebrity", "celebritywit.com", "Celebrity Wit"), 
+                    new OverheardSite("everywhere", "overheardeverywhere.com", "Overheard Everywhere"),
+                    new OverheardSite("celebrity", "celebritywit.com", "Celebrity Wit"), 
                 };
             }
             if (random == null) {
@@ -69,14 +68,14 @@ namespace SkypeBot.plugins {
                 }
 
                 log.Info("Picked " + activeSite.prettyName + "; fetching random quote...");
-                WebRequest webReq = WebRequest.Create("http://www." + activeSite.urlname + "/bin/randomentry.cgi");
+                WebRequest webReq = WebRequest.Create("http://www." + activeSite.urlname + "/pages/random-quote");
                 webReq.Timeout = 10000;
                 WebResponse response = webReq.GetResponse();
                 log.Info("Response received; parsing...");
                 String responseText = new StreamReader(response.GetResponseStream()).ReadToEnd();
 
                 Regex quoteRx = new Regex(@"
-                        <h3\sclass=""title"">(.+?)</h3>
+                        <h2>(.+?)</h2>
                         \s*
                         <p>(.+?)</p>
                     ",
