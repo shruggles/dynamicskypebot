@@ -69,7 +69,7 @@ namespace SkypeBot.plugins {
             XElement exp = exps.First();
 
             doc = XDocument.Parse(exp.Value);
-            XNamespace d = "http://www.mediawiki.org/xml/export-0.4/";
+            XNamespace d = "http://www.mediawiki.org/xml/export-0.8/";
 
             var contents = doc.Descendants(d + "text");
             if (contents.Count() == 0) {
