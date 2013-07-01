@@ -46,7 +46,7 @@ namespace SkypeBot.plugins {
                 WebResponse response = webReq.GetResponse();
                 String responseText = new StreamReader(response.GetResponseStream()).ReadToEnd();
                 log.Debug("Picking a category...");
-                Regex categoryFinderRx = new Regex(@"<a class=""catLink"" href=""([^\s]+)"".*?>(.+?)</a>");
+                Regex categoryFinderRx = new Regex(@"<a class=""e1 tube"" href=""([^\s]+)"".*?><b>(.+?)</b></a>");
                 MatchCollection categoryFinderColl = categoryFinderRx.Matches(responseText);
                 if (categoryFinderColl.Count <= 0) {
                     log.Warn("Couldn't find any porn categories.");
