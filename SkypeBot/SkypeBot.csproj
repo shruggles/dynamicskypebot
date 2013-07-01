@@ -299,11 +299,6 @@
     <Compile Include="ReportForm.Designer.cs">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Service References\UrbanDictionary\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -320,7 +315,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\wordlist.txt" />
-    <None Include="Service References\UrbanDictionary\soap.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -363,15 +357,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\UrbanDictionary\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\UrbanDictionary\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\UrbanDictionary\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Bootstrapper\Skype4COM.VSBootstrapperManifest" />
     <None Include="Bootstrapper\Skype4COM\skype4com.msi" />
     <None Include="plugins\PluginSettings.settings">
@@ -379,13 +364,6 @@
       <LastGenOutput>PluginSettings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Properties\DataSources\SkypeBot.plugins.QuotePluginMk2+Quote.datasource" />
-    <None Include="Service References\UrbanDictionary\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\UrbanDictionary\SkypeBot.UrbanDictionary.Definition.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="SKYPE4COMLib">
@@ -411,22 +389,22 @@
   <ItemGroup>
     <PublishFile Include="doc\readme.txt">
       <Visible>False</Visible>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
     <PublishFile Include="doc\todo.txt">
       <Visible>False</Visible>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
   </ItemGroup>
