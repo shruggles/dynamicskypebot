@@ -40,7 +40,7 @@
     <SuiteName>Dynamic Skype Bot</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.2.5.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -310,6 +310,7 @@
       <DependentUpon>SkypeChatPicker.cs</DependentUpon>
     </Compile>
     <Compile Include="utils\JSON.cs" />
+    <None Include="signing_cert.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\wordlist.txt" />
@@ -364,17 +365,6 @@
     <None Include="Properties\DataSources\SkypeBot.plugins.QuotePluginMk2+Quote.datasource" />
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="SKYPE4COMLib">
-      <Guid>{03282B5D-B38F-469D-849A-09B0A7F4881B}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Bootstrapper\Skype4COM\en\package.xml" />
     <Content Include="Bootstrapper\Skype4COM\product.xml" />
     <Content Include="doc\readme.txt" />
@@ -382,7 +372,6 @@
     <None Include="Resources\help.png" />
     <None Include="Resources\arrow_fat_down.gif" />
     <None Include="Resources\person.gif" />
-    <None Include="signing_cert.pfx" />
   </ItemGroup>
   <ItemGroup>
     <PublishFile Include="doc\readme.txt">
@@ -405,6 +394,17 @@
       <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="SKYPE4COMLib">
+      <Guid>{03282B5D-B38F-469D-849A-09B0A7F4881B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
