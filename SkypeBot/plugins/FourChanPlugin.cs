@@ -52,7 +52,7 @@ namespace SkypeBot.plugins {
                     return;   
                 }
                 String responseText = new StreamReader(response.GetResponseStream()).ReadToEnd();
-                Regex threadFinderRx = new Regex(@"<a href=""res/(\d+)""[^>]*>Reply</a>");
+                Regex threadFinderRx = new Regex(@"<a href=""thread/(\d+)/[^""]+""[^>]*>Reply</a>");
                 MatchCollection threadFinderColl = threadFinderRx.Matches(responseText);
                 if (threadFinderColl.Count <= 0) {
                     log.Warn("4chan appears to have changed its thread-list format. Please report this on the suggestion page.");
@@ -64,11 +64,11 @@ namespace SkypeBot.plugins {
 
                 log.Info("Thread located. Opening thread...");
                 String threadId = threadFinder.Groups[1].Value;
-                webReq = WebRequest.Create("http://boards.4chan.org/b/res/"+threadId);
+                webReq = WebRequest.Create("http://boards.4chan.org/b/thread/"+threadId);
                 response = webReq.GetResponse();
                 responseText = new StreamReader(response.GetResponseStream()).ReadToEnd();
                 log.Info("Thread opened. Locating a random picture...");
-                Regex picFinderRx = new Regex(@"<a class=""fileThumb"" href=""//images\.4chan\.org/b/src/(\d+\.\w+)"" target=""_blank"">");
+                Regex picFinderRx = new Regex(@"<a class=""fileThumb"" href=""//i\.4cdn\.org/b/(\d+\.\w+)"" target=""_blank"">");
                 MatchCollection picFinderColl = picFinderRx.Matches(responseText);
                 if (picFinderColl.Count <= 0) {
                     log.Warn("For some reason, we couldn't find a picture on the page. Please report this on the suggestion page.");
@@ -80,7 +80,7 @@ namespace SkypeBot.plugins {
                 log.Warn("Picture found! Linking to chat.");
 
                 message.Chat.SendMessage(String.Format(
-                    @"Random picture from 4chan: http://images.4chan.org/b/src/{0}",
+                    @"Random picture from 4chan: http://i.4cdn.org/b/{0}",
                     picFinder.Groups[1].Value
                 ));
             }
