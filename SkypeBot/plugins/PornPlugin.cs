@@ -9,6 +9,7 @@ using System.IO;
 using System.Windows.Forms;
 using SKYPE4COMLib;
 using log4net;
+using System.Web;
 
 namespace SkypeBot.plugins {
     public class PornPlugin : Plugin {
@@ -65,7 +66,7 @@ namespace SkypeBot.plugins {
                 webReq.Timeout = 10000;
                 response = webReq.GetResponse();
                 responseText = new StreamReader(response.GetResponseStream()).ReadToEnd();
-                Regex pornFinderRx = new Regex(@"<a href=""/cgi-bin/atx/out.+?u=(http:.+?)""");
+                Regex pornFinderRx = new Regex(@"<a href=""/out/\?[^""]+(http%3A.+?)""");
                 MatchCollection pornFinderColl = pornFinderRx.Matches(responseText);
                 if (pornFinderColl.Count <= 0) {
                     log.Warn("Couldn't find any " + categoryFinder.Groups[2].Value + " porn.");
@@ -81,7 +82,7 @@ namespace SkypeBot.plugins {
 
                 message.Chat.SendMessage(String.Format(
                     @"Random porn link: {0}",
-                    pornFinder.Groups[1].Value
+                    HttpUtility.UrlDecode(pornFinder.Groups[1].Value)
                 ));
             }
         }
