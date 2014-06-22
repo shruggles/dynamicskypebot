@@ -47,8 +47,9 @@ namespace SkypeBot.plugins {
                 String responseText = new StreamReader(response.GetResponseStream()).ReadToEnd();
 
                 Regex notRightRx = new Regex(@"
-                        <h3\sclass=""storytitle""><.+?>(.+?)</a></h3>  # title
-                        <div\sid=""jobstyle"">(.+?)</div>              # job text
+                        <h3\sclass=""storytitle""><.+?>(.+?)</a>\s*</h3>\s*     # title
+                        <div\sclass=""post_header""><a .*?rel=""tag"">(.+?)</a> # job text
+                        \s\|\s(.+?)\s\|                                         # location
                         .+?
                         <div\sclass=""storycontent"">(.+?)</div>       # story
                     ",
@@ -63,8 +64,8 @@ namespace SkypeBot.plugins {
                 }
 
                 String title = match.Groups[1].Value;
-                String job = match.Groups[2].Value;
-                String story = match.Groups[3].Value;
+                String job = String.Format("{0} &ndash; {1}", match.Groups[2].Value, match.Groups[3].Value);
+                String story = match.Groups[4].Value;
 
                 title = HttpUtility.HtmlDecode(title);
                 title = title.Trim();
